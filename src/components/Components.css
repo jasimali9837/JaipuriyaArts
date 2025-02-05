@@ -1,0 +1,19 @@
+.Activatelink {
+    color: white;
+}
+
+/* .Activatelink:active {
+    color: #FF5733;
+} */
+
+.active {
+    color: #FF5733;
+}
+
+.footer {
+    @apply text-[20px] sm:text-[25px] md:text-[27px] xl:text-[30px] font-bold
+}
+
+.footerLinkCenter {
+    @apply flex flex-col justify-center items-center
+}

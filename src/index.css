@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* bg-[#7E1518 */
+.hidescrolbar::-webkit-scrollbar {
+    display: none;
+}
+
+.list-disc {
+    list-style-type: disc;
+}
