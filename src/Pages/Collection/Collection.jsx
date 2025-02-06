@@ -1,5 +1,72 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Buttons } from "../../components/Buttons";
 const Collection = () => {
-  return <div>Collection</div>;
+  const navitems = ["All", "Suit Salwar", "Salwar", "Grown", "Bridal Sarees"];
+  const [Navitems, setNavitems] = useState("All");
+
+  const [collection, setcollection] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("/Data.json")
+      .then((res) => {
+        console.log(res.data);
+        let TotalData = res.data;
+        let FilterdData = TotalData.filter((Data) => Data.category == Navitems);
+        console.log(FilterdData);
+
+        setcollection(FilterdData);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [Navitems]);
+
+  return (
+    <section>
+      <nav className=" md:m-[5vh] m-[2vh]">
+        <ul className="flex   md:w-[70%] justify-evenly w-[100%]">
+          {navitems.map((data, i) => (
+            <li
+              key={i}
+              className={` border-2 border-red-500 p-1  md:px-2    rounded-md text-[12px] justify-between ${
+                Navitems === data ? "bg-[#7E1518] text-white" : ""
+              }`}
+              onClick={() => {
+                setNavitems(data);
+              }}
+            >
+              {data}
+            </li>
+          ))}
+        </ul>{" "}
+      </nav>
+      <div className="  grid grid-cols-2  md:grid md:grid-cols-3 xl:grid-cols-4  ">
+        {collection.map((Data, i) => (
+          <div key={i} className="m-2">
+            <img src={Data.image} alt="" />
+            <h2>{Data.Name}</h2>
+            <p className="m-1">{Data.Title}</p>
+            <h3 className=" font-semibold text-[20px] sm:text-[25px] md:text-[28px]">
+              {" "}
+              {Data.price}
+            </h3>
+            <Buttons
+              CSS={"text-[#7E1518] bg-slate-400 rounded-md p-1  px-2 m-2"}
+              Text={"Add To cart"}
+            />
+            <Buttons
+              CSS={"bg-[#7E1518] text-white rounded-md p-1 px-2"}
+              Text={"Buy now"}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Collection;
