@@ -27,7 +27,7 @@ const Collection = () => {
 
   return (
     <section>
-      <nav className=" md:m-[5vh] m-[2vh]">
+      <nav className=" md:m-[5vh] m-[2vh] cursor-pointer">
         <ul className="flex   md:w-[70%] justify-evenly w-[100%]">
           {navitems.map((data, i) => (
             <li
@@ -44,7 +44,7 @@ const Collection = () => {
           ))}
         </ul>{" "}
       </nav>
-      <div className="  grid grid-cols-2  md:grid md:grid-cols-3 xl:grid-cols-4  ">
+      <div className="  p-3   grid grid-cols-2  md:grid md:grid-cols-3 xl:grid-cols-4  ">
         {collection.map((Data, i) => (
           <div key={i} className="m-2">
             <img src={Data.image} alt="" />
