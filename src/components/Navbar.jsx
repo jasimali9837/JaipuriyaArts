@@ -16,7 +16,7 @@ export const Navbar = () => {
   return (
     <nav
       className=" flex justify-between p-2  
-    xl:text-[24px] text-[15px] items-center bg-[#7E1518] h-[70px]   "
+    xl:text-[20px] text-[15px] items-center bg-[#7E1518] h-[70px]   "
     >
       <Link to={"/"}>
         <h1 className=" md:w-[40%] w-[20%]">Logo</h1>

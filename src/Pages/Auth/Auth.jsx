@@ -74,7 +74,7 @@ export const Register = () => {
           <Link to={"/"}>
             <h1 className="Logo">Logo</h1>
           </Link>
-          <Link to={"/signin"}>
+          <Link to={"/"}>
             <p className="BackPara">
               <FaArrowLeft />
               Go Back{" "}

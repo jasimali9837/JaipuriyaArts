@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Buttons } from "../../components/Buttons";
+import { AppContext } from "../Context/AppContext";
 const Collection = () => {
   const navitems = ["All", "Suit Salwar", "Salwar", "Grown", "Bridal Sarees"];
   const [Navitems, setNavitems] = useState("All");
+  const { id, setid } = useContext(AppContext);
 
   const [collection, setcollection] = useState([]);
 
@@ -25,6 +27,10 @@ const Collection = () => {
       });
   }, [Navitems]);
 
+  const CartItemAdd = (itemid, e) => {
+    e.preventDefault();
+    setid(itemid);
+  };
   return (
     <section>
       <nav className=" md:m-[5vh] m-[2vh] cursor-pointer">
@@ -55,12 +61,16 @@ const Collection = () => {
               {Data.price}
             </h3>
             <Buttons
-              CSS={"text-[#7E1518] bg-slate-400 rounded-md p-1  px-2 m-2"}
+              CSS={
+                "text-[#7E1518] bg-slate-400 rounded-md p-1  px-2 m-2   text-[13px] "
+              }
               Text={"Add To cart"}
             />
+
             <Buttons
-              CSS={"bg-[#7E1518] text-white rounded-md p-1 px-2"}
+              CSS={"bg-[#7E1518] text-white rounded-md p-1 px-2 text-[13px]"}
               Text={"Buy now"}
+              onClick={() => CartItemAdd(Data.id)}
             />
           </div>
         ))}
