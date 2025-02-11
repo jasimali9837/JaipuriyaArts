@@ -6,12 +6,11 @@ import "./Components.css";
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoIosClose } from "react-icons/io";
+import { useContext } from "react";
+import { AppContext } from "../Pages/Context/AppContext";
 export const Navbar = () => {
-  const [navitem, setnavitem] = useState(0);
-  const [mobilenav, setmobilenav] = useState(false);
-  const handleNavitems = (i) => {
-    setnavitem(i);
-  };
+  const { navitem, setnavitem, mobilenav, setmobilenav } =
+    useContext(AppContext);
 
   return (
     <nav
@@ -28,28 +27,28 @@ export const Navbar = () => {
           <NavLink
             to={"/"}
             className={` ${navitem === 1 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(1)}
+            onClick={() => setnavitem(1)}
           >
             <li>Home</li>
           </NavLink>
           <NavLink
             to={"/about"}
             className={` ${navitem === 2 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(2)}
+            onClick={() => setnavitem(2)}
           >
             <li>About</li>
           </NavLink>
           <NavLink
             to={"/collection"}
             className={` ${navitem === 3 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(3)}
+            onClick={() => setnavitem(3)}
           >
             <li>Collection</li>
           </NavLink>
           <NavLink
             to={"/contact"}
             className={` ${navitem === 4 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(4)}
+            onClick={() => setnavitem(4)}
           >
             <li>Contact</li>
           </NavLink>
@@ -58,7 +57,7 @@ export const Navbar = () => {
           <NavLink
             to={"/cart"}
             className={` ${navitem === 5 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(5)}
+            onClick={() => setnavitem(5)}
           >
             <li>
               <IoCart className="text-[25px]" />
@@ -68,7 +67,7 @@ export const Navbar = () => {
           <NavLink
             to={"/login"}
             className={` ${navitem === 6 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(6)}
+            onClick={() => setnavitem(6)}
           >
             <li>
               <Buttons Text={"Log in"} />
@@ -77,7 +76,7 @@ export const Navbar = () => {
           <NavLink
             to={"/signin"}
             className={` ${navitem === 7 ? "active" : "Activatelink"}`}
-            onClick={() => handleNavitems(7)}
+            onClick={() => setnavitem(7)}
           >
             <li>
               <Buttons Text={"Sign  in"} />
@@ -91,7 +90,7 @@ export const Navbar = () => {
         <NavLink
           to={"/cart"}
           className={` ${navitem === 5 ? "active" : "Activatelink"}`}
-          onClick={() => handleNavitems(5)}
+          onClick={() => setnavitem(5)}
         >
           <IoCart className="text-[25px]" />
         </NavLink>
@@ -114,7 +113,7 @@ export const Navbar = () => {
                 <NavLink
                   to={"/"}
                   className={` ${navitem === 1 ? "active" : "Activatelink"}`}
-                  onClick={() => handleNavitems(1)}
+                  onClick={() => setnavitem(1)}
                 >
                   <li className="pl-5 ">Home</li>
                 </NavLink>
@@ -122,7 +121,7 @@ export const Navbar = () => {
                 <NavLink
                   to={"/about"}
                   className={` ${navitem === 2 ? "active" : "Activatelink"}`}
-                  onClick={() => handleNavitems(2)}
+                  onClick={() => setnavitem(2)}
                 >
                   <li className="pl-5 ">About</li>
                 </NavLink>
@@ -130,7 +129,7 @@ export const Navbar = () => {
                 <NavLink
                   to={"/collection"}
                   className={` ${navitem === 3 ? "active" : "Activatelink"}`}
-                  onClick={() => handleNavitems(3)}
+                  onClick={() => setnavitem(3)}
                 >
                   <li className="pl-5 ">Collection</li>
                 </NavLink>
@@ -138,7 +137,7 @@ export const Navbar = () => {
                 <NavLink
                   to={"/contact"}
                   className={` ${navitem === 4 ? "active" : "Activatelink"}`}
-                  onClick={() => handleNavitems(4)}
+                  onClick={() => setnavitem(4)}
                 >
                   <li className="pl-5 ">Contact</li>
                 </NavLink>
@@ -149,7 +148,7 @@ export const Navbar = () => {
                   <Link
                     to={"/login"}
                     className={` ${navitem === 6 ? "active" : "Activatelink"}`}
-                    onClick={() => handleNavitems(6)}
+                    onClick={() => setnavitem(6)}
                   >
                     <Buttons
                       Text={"Log in"}
@@ -160,7 +159,7 @@ export const Navbar = () => {
                   <Link
                     to={"/signin"}
                     className={` ${navitem === 7 ? "active" : "Activatelink"}`}
-                    onClick={() => handleNavitems(7)}
+                    onClick={() => setnavitem(7)}
                   >
                     <Buttons
                       Text={"Sign  in"}

@@ -3,12 +3,13 @@
 import { AppContext } from "./AppContext";
 import { useState } from "react";
 export const ContextProvider = ({ children }) => {
-  const [id, setid] = useState(null);
-  console.log(
-    "This is The id Of My current item Which I am Saved in My cart ",
-    id
-  );
+  const [id, setid] = useState([]);
+  const [navitem, setnavitem] = useState(0);
+  const [mobilenav, setmobilenav] = useState(false);
 
-  const value = { id, setid };
+  const handleNavitems = (i) => {
+    setnavitem(i);
+  };
+  const value = { id, setid, handleNavitems, mobilenav, setmobilenav };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

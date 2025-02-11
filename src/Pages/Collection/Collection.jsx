@@ -4,11 +4,13 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Buttons } from "../../components/Buttons";
 import { AppContext } from "../Context/AppContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Link, useNavigate } from "react-router";
 const Collection = () => {
   const navitems = ["All", "Suit Salwar", "Salwar", "Grown", "Bridal Sarees"];
   const [Navitems, setNavitems] = useState("All");
   const { id, setid } = useContext(AppContext);
-
   const [collection, setcollection] = useState([]);
 
   useEffect(() => {
@@ -28,8 +30,8 @@ const Collection = () => {
   }, [Navitems]);
 
   const CartItemAdd = (itemid, e) => {
-    e.preventDefault();
-    setid(itemid);
+    setid((prev) => [...prev, itemid]);
+    toast.success("Items Addedd Sucessfully !");
   };
   return (
     <section>
@@ -60,18 +62,19 @@ const Collection = () => {
               {" "}
               {Data.price}
             </h3>
-            <Buttons
-              CSS={
-                "text-[#7E1518] bg-slate-400 rounded-md p-1  px-2 m-2   text-[13px] "
-              }
-              Text={"Add To cart"}
-            />
 
-            <Buttons
-              CSS={"bg-[#7E1518] text-white rounded-md p-1 px-2 text-[13px]"}
-              Text={"Buy now"}
-              onClick={() => CartItemAdd(Data.id)}
-            />
+            <Link to={"/cart"}>
+              <button
+                className=" text-[#7E1518] bg-slate-400 rounded-md p-1  px-2 m-2   text-[13px] "
+                onClick={() => CartItemAdd(Data.id)}
+              >
+                Add To cart
+              </button>
+            </Link>
+
+            <button className="bg-[#7E1518] text-white rounded-md p-1 px-2 text-[13px]">
+              Buy now
+            </button>
           </div>
         ))}
       </div>
