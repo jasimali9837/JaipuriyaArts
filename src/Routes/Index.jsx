@@ -13,10 +13,10 @@ export const Index = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainLayout />}>
-          <Route path={""} element={<Home />} />
-          <Route path={"about"} element={<About />} />
+          <Route index element={<Home />} />{" "}
+          <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
-          <Route path="Collection" element={<Collection />} />
+          <Route path="collection" element={<Collection />} />
           <Route path="cart" element={<Cart />} />
         </Route>
         <Route path="/login" element={<Login />} />
